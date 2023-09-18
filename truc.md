@@ -7,7 +7,7 @@ title: Evolution Tree
 ---
   flowchart TD
       start([Magazine]) --> evol{{evolutions}}
-      evol == LVL 1-7 ==> twitch([fab:fa-twitch Twitch])
+      evol == LVL 1-7 ==> twitch(fab:fa-twitch Twitch)
       evol  == LVL 1-5 ==>  editors([Editors])
       evol --> web([Web])
       web --> shop{{market}}
