@@ -6,8 +6,8 @@
 title: Evolution Tree
 ---
   flowchart TD
-      start([Magazine]) --> evol{{evolutions}}
-      evol == LVL 1-7 ==> twitch(fab:fa-twitch Twitch)
+      start([Canard PC]) --> evol{{evolutions}}
+      evol == LVL 1-7 ==> twitch([Twitch])
       evol  == LVL 1-5 ==>  editors([Editors])
       evol --> web([Web])
       web --> shop{{market}}
@@ -20,6 +20,22 @@ title: Evolution Tree
       twitch == LVL 1-3 ==>   modos([Moderators])
       eventsTwitch{{Random events}} --> hype([Hype Train])
       eventsTwitch{{Random events}} --> trolls([Trolls])
+
+      style start fill:#e31010,stroke:#e1e1e1,stroke-width:1px,color:#fff
+      style twitch fill:#9147ff,stroke:#e1e1e1,stroke-width:1px,color:#e1e1e1
+      style eventsTwitch fill:#9147ff,stroke:#e1e1e1,stroke-width:1px,color:#e1e1e1
+      style modos fill:#9147ff,stroke:#e1e1e1,stroke-width:1px,color:#e1e1e1
+      style hype fill:#9147ff,stroke:#e1e1e1,stroke-width:1px,color:#e1e1e1
+      style trolls fill:#9147ff,stroke:#e1e1e1,stroke-width:1px,color:#e1e1e1
+      style editors fill:#3C99D6,stroke:#e1e1e1,stroke-width:1px,color:#e1e1e1
+      style evol fill:#00E6CA,stroke:#e1e1e1,stroke-width:1px,color:#000
+      style web fill:#FF33FF,stroke:#e1e1e1,stroke-width:1px,color:#fff
+      style eventsWeb fill:#FF33FF,stroke:#e1e1e1,stroke-width:1px,color:#fff
+      style hardware fill:#FF33FF,stroke:#e1e1e1,stroke-width:1px,color:#fff
+      style shop fill:#FF33FF,stroke:#e1e1e1,stroke-width:1px,color:#fff
+      style hs fill:#FF33FF,stroke:#e1e1e1,stroke-width:1px,color:#fff
+      style crowdfunding fill:#FF33FF,stroke:#e1e1e1,stroke-width:1px,color:#fff
+      style goodies fill:#FF33FF,stroke:#e1e1e1,stroke-width:1px,color:#fff
 
 ```
 <br>
