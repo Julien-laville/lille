@@ -36,11 +36,11 @@ class Game extends Phaser.Scene {
       createTwitch(false);
     };
 
-    this.add
-      .text(400, 32, 'Click icons to collect monaayyyy', {
-        color: '#00ff00',
-      })
-      .setOrigin(0.5, 0);
+    // this.add
+    //   .text(400, 32, 'Click icons to collect monaayyyy', {
+    //     color: '#00ff00',
+    //   })
+    //   .setOrigin(0.5, 0);
 
     var config1 = {
       key: 'move',
