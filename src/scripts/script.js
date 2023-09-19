@@ -13,20 +13,15 @@ class Game extends Phaser.Scene {
   }
 
   preload() {
-    //this.load.setBaseURL('http://labs.phaser.io');
-    this.load.spritesheet('abo', './twitch_lvl1.png', {
-      frameWidth: 32,
-      frameHeight: 32,
-    });
-    this.load.spritesheet('twitch', './twitch_lvl1.png', {
-      frameWidth: 40,
-      frameHeight: 100,
-    });
-    this.load.spritesheet('boom', './explosion.png', {
-      frameWidth: 64,
-      frameHeight: 64,
-      endFrame: 23,
-    });
+    this.load.spritesheet('abo', './images/twitch_lvl1.png', { frameWidth: 32, frameHeight: 32 });
+    this.load.spritesheet('twitch_1', './images/twitch_lvl1.png', { frameWidth: 36, frameHeight: 36 });
+    this.load.spritesheet('twitch_2', './images/twitch_lvl2.png', { frameWidth: 36, frameHeight: 36 });
+    this.load.spritesheet('twitch_3', './images/twitch_lvl3.png', { frameWidth: 36, frameHeight: 36 });
+    this.load.spritesheet('twitch_4', './images/twitch_lvl4.png', { frameWidth: 36, frameHeight: 36 });
+    this.load.spritesheet('twitch_5', './images/twitch_lvl5.png', { frameWidth: 36, frameHeight: 36 });
+    this.load.spritesheet('twitch_6', './images/twitch_lvl6.png', { frameWidth: 36, frameHeight: 36 });
+    this.load.spritesheet('twitch_7', './images/twitch_lvl7.png', { frameWidth: 36, frameHeight: 36 });
+    this.load.spritesheet('boom', './images/explosion.png', { frameWidth: 64, frameHeight: 64, endFrame: 23 });
   }
 
   create() {
@@ -87,14 +82,14 @@ class Game extends Phaser.Scene {
         console.log('auto click');
         setTimeout(() => {
           aboSprite.emit('pointerdown');
-        }, 1000);
+        }, 8000 - twitchLVL * 1000);
       }
     };
 
     const createTwitch = function (isAutoCreated) {
       var x = Phaser.Math.Between(50, 750);
       var y = Phaser.Math.Between(100, 550);
-      var twitchSprite = self.add.sprite(x, y, 'twitch');
+      var twitchSprite = self.add.sprite(x, y, `twitch_${twitchLVL}`);
       twitchSprite.setInteractive();
       twitchSprite.once('pointerdown', function () {
         this.clearTint();

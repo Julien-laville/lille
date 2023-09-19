@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="./phaser.js"></script>
+    <script src="./scripts/phaser.js"></script>
     <link href="./style.css" rel="stylesheet" />
   </head>
   <body>
@@ -40,11 +40,15 @@
           </div>
           <div>
             <h2>Upgrades</h2>
-            <label for="abo">Abonnement</label>
-            <input type="checkbox" name="abo" id="abo" value="abo" />
-            <label for="twitch"
-              >Twitch (lvl : <span id="twitch_lvl"></span>)</label
-            >
+            <ul>
+              <li>
+                <label for="abo">Abonnement</label>
+                <input type="checkbox" name="abo" id="abo" value="abo" />
+              </li>
+            </ul>
+            <label for="twitch">
+              Twitch (lvl : <span id="twitch_lvl"></span>)
+            </label>
             <input type="checkbox" name="twitch" id="twitch" value="twitch" />
             <label for="twitch_up">Upgrade Twitch</label>
             <input
@@ -61,5 +65,5 @@
       </main>
     </div>
   </body>
-  <script src="./script.js"></script>
+  <script src="./scripts/script.js"></script>
 </html>
