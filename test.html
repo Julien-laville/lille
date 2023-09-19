@@ -1,123 +1,65 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser-arcade-physics.min.js"></script>
+    <script src="./phaser.js"></script>
+    <link href="./style.css" rel="stylesheet" />
   </head>
   <body>
-    <script>
-      const addMoney = function (valueToAdd) {
-        var checkbox = document.querySelector('input[name=money]');
-        checkbox.value =
-          parseInt(valueToAdd, 10) + parseInt(checkbox.value, 10);
-      };
-      class Game extends Phaser.Scene {
-        constructor() {
-          super();
-        }
+    <div class="wrapper">
+      <nav>
+        <header>
+          <span></span>
+          Admin
+          <a></a>
+        </header>
 
-        preload() {
-          this.load.setBaseURL('http://labs.phaser.io');
-          this.load.spritesheet('abo', 'assets/tests/invaders/invader1.png', {
-            frameWidth: 32,
-            frameHeight: 32,
-          });
-          this.load.spritesheet('twitch', 'assets/sprites/gem.png', {
-            frameWidth: 40,
-            frameHeight: 100,
-          });
-          this.load.spritesheet('boom', 'assets/sprites/explosion.png', {
-            frameWidth: 64,
-            frameHeight: 64,
-            endFrame: 23,
-          });
-        }
+        <ul>
+          <li><span>Navigation</span></li>
+          <li><a class="active">Game</a></li>
+          <li><a>Statistics</a></li>
+          <li><a>Roadmap</a></li>
+        </ul>
+      </nav>
 
-        create() {
-          var checkbox = document.querySelector('input[name=abo]');
-          checkbox.onclick = () => {
-            createShip();
-          };
-          var twitch = document.querySelector('input[name=twitch]');
-          twitch.onclick = () => {
-            createTwitch();
-          };
+      <main>
+        <h1>CPC Game Company</h1>
 
-          this.add
-            .text(400, 32, 'Click icons to collect monaayyyy', {
-              color: '#00ff00',
-            })
-            .setOrigin(0.5, 0);
-
-          var config1 = {
-            key: 'move',
-            frames: 'abo',
-            frameRate: 4,
-            repeat: -1,
-          };
-
-          var config2 = {
-            key: 'explode',
-            frames: 'boom',
-            hideOnComplete: true,
-          };
-
-          this.anims.create(config1);
-          this.anims.create(config2);
-
-          var colors = [
-            0xef658c, 0xff9a52, 0xffdf00, 0x31ef8c, 0x21dfff, 0x31aade,
-            0x5275de, 0x9c55ad, 0xbd208c,
-          ];
-
-          const self = this;
-
-          const createAbo = function () {
-            var x = Phaser.Math.Between(50, 750);
-            var y = Phaser.Math.Between(100, 550);
-            var ship = self.add.sprite(x, y, 'invader');
-            ship.play('move');
-            ship.setTint(Phaser.Utils.Array.GetRandom(colors));
-            ship.setInteractive();
-            ship.once('pointerdown', function () {
-              this.clearTint();
-              this.play('explode');
-              createAbo(self);
-              addMoney(10);
-            });
-          };
-
-          const createTwitch = function () {
-            var x = Phaser.Math.Between(50, 750);
-            var y = Phaser.Math.Between(100, 550);
-            var ship = self.add.sprite(x, y, 'twitch');
-            ship.setInteractive();
-            ship.once('pointerdown', function () {
-              this.clearTint();
-              this.play('explode');
-              setTimeout(() => {
-                createTwitch(self);
-              }, 5000);
-              addMoney(1000);
-            });
-          };
-
-          createAbo();
-        }
-      }
-      const config = {
-        type: Phaser.AUTO,
-        width: 800,
-        height: 600,
-        scene: Game,
-      };
-
-      var game = new Phaser.Game(config);
-    </script>
-
-    <label for="abo"></label
-    ><input type="checkbox" name="abo" id="abo" value="abo" />
-    <label for="twitch"></label
-    ><input type="checkbox" name="twitch" id="twitch" value="twitch" />
-    <input type="text" name="money" disabled="disabled" value="0" />
+        <div class="flex-grid">
+          <div>
+            <h2>Clean CSS Code</h2>
+            <ul>
+              <li>no position: absolute</li>
+              <li>no float</li>
+              <li>no clearfix</li>
+              <li>no faux columns</li>
+              <li>no javascript</li>
+            </ul>
+          </div>
+          <div>
+            <canvas id="game"></canvas>
+          </div>
+          <div>
+            <h2>Upgrades</h2>
+            <label for="abo">Abonnement</label>
+            <input type="checkbox" name="abo" id="abo" value="abo" />
+            <label for="twitch"
+              >Twitch (lvl : <span id="twitch_lvl"></span>)</label
+            >
+            <input type="checkbox" name="twitch" id="twitch" value="twitch" />
+            <label for="twitch_up">Upgrade Twitch</label>
+            <input
+              type="button"
+              name="twitch_up"
+              id="twitch_up"
+              value="twitch_up"
+              onclick="twitch_up()"
+            />
+            <label for="twitch">Money</label>
+            <input type="text" name="money" disabled="disabled" value="0" />
+          </div>
+        </div>
+      </main>
+    </div>
   </body>
+  <script src="./script.js"></script>
 </html>
