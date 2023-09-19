@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser-arcade-physics.min.js"></script>
+  </head>
+  <body>
+    <script>
+      const addMoney = function (valueToAdd) {
+        var checkbox = document.querySelector('input[name=money]');
+        checkbox.value =
+          parseInt(valueToAdd, 10) + parseInt(checkbox.value, 10);
+      };
+      class Example extends Phaser.Scene {
+        constructor() {
+          super();
+        }
+
+        preload() {
+          this.load.setBaseURL('http://labs.phaser.io');
+          this.load.spritesheet('abo', 'assets/tests/invaders/invader1.png', {
+            frameWidth: 32,
+            frameHeight: 32,
+          });
+          this.load.spritesheet('twitch', 'assets/sprites/gem.png', {
+            frameWidth: 40,
+            frameHeight: 100,
+          });
+          this.load.spritesheet('boom', 'assets/sprites/explosion.png', {
+            frameWidth: 64,
+            frameHeight: 64,
+            endFrame: 23,
+          });
+        }
+
+        create() {
+          var checkbox = document.querySelector('input[name=abo]');
+          checkbox.onclick = () => {
+            createShip();
+          };
+          var twitch = document.querySelector('input[name=twitch]');
+          twitch.onclick = () => {
+            createTwitch();
+          };
+
+          this.add
+            .text(400, 32, 'Click icons to collect monaayyyy', {
+              color: '#00ff00',
+            })
+            .setOrigin(0.5, 0);
+
+          var config1 = {
+            key: 'move',
+            frames: 'abo',
+            frameRate: 4,
+            repeat: -1,
+          };
+
+          var config2 = {
+            key: 'explode',
+            frames: 'boom',
+            hideOnComplete: true,
+          };
+
+          this.anims.create(config1);
+          this.anims.create(config2);
+
+          var colors = [
+            0xef658c, 0xff9a52, 0xffdf00, 0x31ef8c, 0x21dfff, 0x31aade,
+            0x5275de, 0x9c55ad, 0xbd208c,
+          ];
+
+          const self = this;
+
+          const createAbo = function () {
+            var x = Phaser.Math.Between(50, 750);
+            var y = Phaser.Math.Between(100, 550);
+            var ship = self.add.sprite(x, y, 'invader');
+            ship.play('move');
+            ship.setTint(Phaser.Utils.Array.GetRandom(colors));
+            ship.setInteractive();
+            ship.once('pointerdown', function () {
+              this.clearTint();
+              this.play('explode');
+              createAbo(self);
+              addMoney(10);
+            });
+          };
+
+          const createTwitch = function () {
+            var x = Phaser.Math.Between(50, 750);
+            var y = Phaser.Math.Between(100, 550);
+            var ship = self.add.sprite(x, y, 'twitch');
+            ship.setInteractive();
+            ship.once('pointerdown', function () {
+              this.clearTint();
+              this.play('explode');
+              setTimeout(() => {
+                createTwitch(self);
+              }, 5000);
+              addMoney(1000);
+            });
+          };
+
+          createAbo();
+        }
+      }
+      const config = {
+        type: Phaser.AUTO,
+        parent: 'phaser-example',
+        width: 800,
+        height: 600,
+        scene: Example,
+      };
+
+      var game = new Phaser.Game(config);
+    </script>
+
+    <label for="abo"></label
+    ><input type="checkbox" name="abo" id="abo" value="abo" />
+    <label for="twitch"></label
+    ><input type="checkbox" name="twitch" id="twitch" value="twitch" />
+    <input type="text" name="money" disabled="disabled" value="0" />
+  </body>
+</html>
