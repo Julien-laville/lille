@@ -3,7 +3,7 @@
   <head>
     <script src="./scripts/phaser.js"></script>
     <link href="./styles/style.css" rel="stylesheet" />
-    <title>Canard PC AIO - Landing</title>
+    <title>Canard PC AIO - Twitch</title>
   </head>
   <body>
     <div class="wrapper">
@@ -15,9 +15,9 @@
         </header>
         <ul>
           <li><span>Navigation</span></li>
-          <li><a href="./index.html" class="active">Accueil</a></li>
+          <li><a href="./index.html">Accueil</a></li>
           <li><a href="./game.html">Game</a></li>
-          <li><a href="./twitch.html">Twitch</a></li>
+          <li><a href="./twitch.html" class="active">Twitch</a></li>
           <li>
             <a href="https://twitter.com/Canardpcredac" target="_blank">
               Twitter
@@ -53,27 +53,20 @@
       </nav>
 
       <main>
-        <h1>CPC AIO</h1>
+        <h1>CPC Game Company</h1>
 
         <div class="flex-grid">
-          <div>
-            <h2>Bienvenue !</h2>
-            <p>Vous venez d'arriver sur le projet CPC AIO</p>
-            <br />
-            <p>
-              Le site qui a tout les bon liens de Canard PC et de la communauté
-              !
-            </p>
-            <br />
-            <p>
-              Vous connaissez
-              <a href="https://orteil.dashnet.org/cookieclicker/">
-                Cookie Clicker
-              </a>
-              ? vous allez aimer
-              <a href="./game.html"> CPC Cliker </a>
-            </p>
-          </div>
+          <div id="twitch-embed"></div>
+          <script src="https://embed.twitch.tv/embed/v1.js"></script>
+          <script type="text/javascript">
+            const height = window.innerHeight * 0.8;
+            new Twitch.Embed('twitch-embed', {
+              width: '100%',
+              height: `${height}px`,
+              channel: 'canardpc',
+              parent: ['localhost', 'github.com'],
+            });
+          </script>
         </div>
       </main>
     </div>

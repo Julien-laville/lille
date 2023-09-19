@@ -131,6 +131,9 @@ nav ul li:nth-child(7) a:before {
 nav ul li:nth-child(8) a:before {
   content: '\f0fa';
 }
+nav ul li:nth-child(9) a:before {
+  content: '\f0fa';
+}
 nav ul li:nth-child(10) a:before {
   content: '\f002';
 }

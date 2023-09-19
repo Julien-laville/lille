@@ -15,8 +15,8 @@
         </header>
         <ul>
           <li><span>Navigation</span></li>
-          <li><a href="./index.html" class="active">Accueil</a></li>
-          <li><a href="./game.html">Game</a></li>
+          <li><a href="./index.html">Accueil</a></li>
+          <li><a href="./game.html" class="active">Game</a></li>
           <li><a href="./twitch.html">Twitch</a></li>
           <li>
             <a href="https://twitter.com/Canardpcredac" target="_blank">
@@ -57,22 +57,40 @@
 
         <div class="flex-grid">
           <div>
-            <h2>Bienvenue !</h2>
-            <p>Vous venez d'arriver sur le projet CPC AIO</p>
-            <br />
-            <p>
-              Le site qui a tout les bon liens de Canard PC et de la communauté
-              !
-            </p>
-            <br />
-            <p>
-              Vous connaissez
-              <a href="https://orteil.dashnet.org/cookieclicker/">
-                Cookie Clicker
-              </a>
-              ? vous allez aimer
-              <a href="./game.html"> CPC Cliker </a>
-            </p>
+            <h2>Clean CSS Code</h2>
+            <ul>
+              <li>no position: absolute</li>
+              <li>no float</li>
+              <li>no clearfix</li>
+              <li>no faux columns</li>
+              <li>no javascript</li>
+            </ul>
+          </div>
+          <div>
+            <canvas id="game"></canvas>
+          </div>
+          <div>
+            <h2>Upgrades</h2>
+            <ul>
+              <li>
+                <label for="abo">Abonnement</label>
+                <input type="checkbox" name="abo" id="abo" value="abo" />
+              </li>
+            </ul>
+            <label for="twitch">
+              Twitch (lvl : <span id="twitch_lvl"></span>)
+            </label>
+            <input type="checkbox" name="twitch" id="twitch" value="twitch" />
+            <label for="twitch_up">Upgrade Twitch</label>
+            <input
+              type="button"
+              name="twitch_up"
+              id="twitch_up"
+              value="twitch_up"
+              onclick="twitch_up()"
+            />
+            <label for="twitch">Money</label>
+            <input type="text" name="money" disabled="disabled" value="0" />
           </div>
         </div>
       </main>
